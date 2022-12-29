@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_store/src/config/custom_colors.dart';
+import 'package:grocery_store/src/pages/home/home_tab.dart';
+
 class BaseScreen extends StatefulWidget {
    const BaseScreen({Key? key}) : super(key: key);
 
@@ -19,9 +21,13 @@ class _BaseScreenState extends State<BaseScreen> {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
-        children: [],
+        children:  const [
+          HomeTab(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: CustomColors.customSwatchColor,
         currentIndex: currentIndex,
         onTap: (index){
           setState(() {
@@ -29,9 +35,8 @@ class _BaseScreenState extends State<BaseScreen> {
             pageController.jumpToPage(index);
           });
           },
-        backgroundColor: CustomColors.customSwatchColor,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white.withAlpha(100),
+        unselectedItemColor:Colors.white,
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
