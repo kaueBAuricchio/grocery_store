@@ -9,6 +9,8 @@ class CustomTextField extends StatefulWidget {
      this.inputFormatter,
      this.obscurePass = false,
      this.keyBoardType,
+     this.initialValue,
+     this.readOnly = false,
   }) : super(key: key);
 
   final IconData icon;
@@ -16,6 +18,8 @@ class CustomTextField extends StatefulWidget {
   final bool obscurePass;
   final List<TextInputFormatter>? inputFormatter;
   final TextInputType? keyBoardType;
+  final String? initialValue;
+  final bool readOnly;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -37,6 +41,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
+        readOnly: widget.readOnly,
+        initialValue: widget.initialValue,
         obscureText: isObscure,
         inputFormatters: widget.inputFormatter,
         keyboardType: widget.keyBoardType,

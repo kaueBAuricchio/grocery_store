@@ -1,5 +1,9 @@
 
 import 'package:grocery_store/src/models/item_model.dart';
+import 'package:grocery_store/src/models/order_model.dart';
+import 'package:grocery_store/src/models/user_model.dart';
+
+import 'cart_item_model.dart';
 
 ItemModel apple =
 ItemModel(
@@ -66,4 +70,44 @@ List<String> categories = [
   'Cereais',
   'Laticinios',
   'Guloseimas',
+];
+
+List<CartItemModel> cartItems = [
+  CartItemModel(
+      item: apple,
+      quantity: 3
+  ),
+  CartItemModel(
+      item: mango,
+      quantity: 1
+  ),
+  CartItemModel(
+      item: guava,
+      quantity: 2
+  ),
+];
+
+UserModel user = UserModel(
+    name: 'Kaue',
+    email: 'Kaue@email.com',
+    cellphone: '(55) 11 9 4002-8922',
+    cpf: '123.456.678.90',
+    pass: '12345'
+);
+
+List<OrderModel> orders = [
+  OrderModel(
+      id: 'asd6a5dsgb4ady8ydvg',
+      createdDateTime: DateTime.parse('2023-01-23 19:16'),
+      overDudeDateTime: DateTime.parse('2023-01-23 19:37'),
+      items: [
+        CartItemModel(
+            item: mango,
+            quantity: 4
+        )
+      ],
+      status: 'pedindy_payment',
+      copyAndPaste: 'scqfbvofboqw',
+      total: 1439.2
+  )
 ];
