@@ -104,10 +104,34 @@ List<OrderModel> orders = [
         CartItemModel(
             item: mango,
             quantity: 4
-        )
+        ),
+        CartItemModel(
+            item: grape,
+            quantity: 2
+        ),
       ],
-      status: 'pedindy_payment',
+      status: 'delivered',
       copyAndPaste: 'scqfbvofboqw',
-      total: 1439.2
+      total: 1639
+  ),
+  OrderModel(
+      id: 'dneuh0eh84deidfn',
+      createdDateTime: DateTime.parse('2023-01-23 19:16'),
+      overDudeDateTime: DateTime.parse('2023-01-23 19:37'),
+      items: [
+        CartItemModel(
+            item: mango,
+            quantity: 4
+        ),
+        CartItemModel(
+            item: grape,
+            quantity: 2
+        ),
+        CartItemModel(item: papaya, quantity: 1)
+      ],
+      status: 'delivered',
+      copyAndPaste: 'scqfbvofboqw',
+      total: 2329.30
   )
+
 ];
