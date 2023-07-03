@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_store/src/config/custom_colors.dart';
 import 'package:grocery_store/src/models/cart_item_model.dart';
 import 'package:grocery_store/src/pages/cart/components/cart_tile.dart';
+import 'package:grocery_store/src/pages/common_widgets/payment_dialog.dart';
 import 'package:grocery_store/src/services/utils_services.dart';
 import 'package:grocery_store/src/models/app_data.dart' as appData;
 
@@ -20,6 +21,7 @@ class _CartTabState extends State<CartTab> {
   void removeItemCart(CartItemModel cartItem){
      setState(() {
        appData.cartItems.remove(cartItem);
+       utilsServices.showToast(message: "${cartItem.item.itemName} removido(a) no carrinho");
 
      });
    }
@@ -98,7 +100,20 @@ class _CartTabState extends State<CartTab> {
                       ),
                       onPressed: () async{
                         bool? result = await showOrderConfirmation();
-                        print(result);
+                        if(result ?? false) {
+                          showDialog(
+                              context: context,
+                              builder: (_) {
+                                return PaymentDialog(
+                                    order: appData.orders.first
+                                );
+                              }
+                          );
+                        } else {
+                          utilsServices.showToast(
+                              message: "Pedido nãp confirmado",
+                              isError: true);
+                        }
                       },
                       child: const Text(
                           'Concluir pedido',
