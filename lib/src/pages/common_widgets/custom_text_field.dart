@@ -11,7 +11,9 @@ class CustomTextField extends StatefulWidget {
      this.keyBoardType,
      this.initialValue,
      this.readOnly = false,
-  }) : super(key: key);
+     this.validation,
+     this.controller,
+   }) : super(key: key);
 
   final IconData icon;
   final String label;
@@ -20,6 +22,8 @@ class CustomTextField extends StatefulWidget {
   final TextInputType? keyBoardType;
   final String? initialValue;
   final bool readOnly;
+  final String? Function(String?)? validation;
+  final TextEditingController? controller;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -42,9 +46,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
       padding: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
         readOnly: widget.readOnly,
+        controller: widget.controller,
         initialValue: widget.initialValue,
         obscureText: isObscure,
         inputFormatters: widget.inputFormatter,
+        validator: widget.validation,
         keyboardType: widget.keyBoardType,
         decoration: InputDecoration(
           prefixIcon:  Icon(widget.icon),

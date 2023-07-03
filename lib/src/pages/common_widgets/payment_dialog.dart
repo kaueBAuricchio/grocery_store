@@ -20,63 +20,83 @@ class PaymentDialog extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20)
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              //Title
-              Text(
-                'Pagamneto por Pix ',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18
-                ),
-              ),
-              //Qr Code
-              QrImage(
-                data: "1234567890",
-                version: QrVersions.auto,
-                size: 200.0,
-              ),
-              //maturity
-              Text('Vencimento: ${utilsServices.formatDateTime(
-                  order.overDudeDateTime)}',
-                style: const TextStyle(
-                    fontSize: 12
-                ),
-              ),
-              //total
-              Text('Total: ${utilsServices.currency(order.total)}',
-                style: const TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold
-                ),
-              ),
-              //Button copy and paste
-              OutlinedButton.icon(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            //Button close
+            Positioned(
+                top: 0,
+                right: 0,
+                child: IconButton(
+                  onPressed: (){
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(Icons.close),
+                )
+            ),
+            //Content
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //Title
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      'Pagamneto por Pix ',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18
+                      ),
                     ),
-                    side: BorderSide(
-                      width: 2,
-                      color: CustomColors.customSwatchColor.shade300
-                    )
                   ),
-                  onPressed: () {},
-                  icon: const Icon(Icons.copy,
-                      size: 15
+                  //Qr Code
+                  QrImage(
+                    data: "1234567890",
+                    version: QrVersions.auto,
+                    size: 200.0,
                   ),
-                  label: const Text(
-                    'Copiar codigo Pix',
-                    style: TextStyle(
-                        fontSize: 13
+                  //maturity
+                  Text('Vencimento: ${utilsServices.formatDateTime(
+                      order.overDudeDateTime)}',
+                    style: const TextStyle(
+                        fontSize: 12
                     ),
+                  ),
+                  //total
+                  Text('Total: ${utilsServices.currency(order.total)}',
+                    style: const TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  //Button copy and paste
+                  OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                        side: BorderSide(
+                          width: 2,
+                          color: CustomColors.customSwatchColor.shade300
+                        )
+                      ),
+                      onPressed: () {},
+                      icon: const Icon(Icons.copy,
+                          size: 15
+                      ),
+                      label: const Text(
+                        'Copiar codigo Pix',
+                        style: TextStyle(
+                            fontSize: 13
+                        ),
+                      )
                   )
-              )
-            ],
-          ),
+                ],
+              ),
+            ),
+          ],
         )
     );
   }
