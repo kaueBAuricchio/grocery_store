@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:grocery_store/src/config/custom_colors.dart';
-import 'package:grocery_store/src/pages/auth/sign_in_screen.dart';
+import 'package:grocery_store/src/pages/auth/view/sign_in_screen.dart';
 import 'package:grocery_store/src/pages/common_widgets/AppNameWidget.dart';
 import 'package:grocery_store/src/routes/app_pages.dart';
 
