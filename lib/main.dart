@@ -4,6 +4,8 @@ import 'package:grocery_store/src/pages/auth/controller/auth_controller.dart';
 import 'package:grocery_store/src/routes/app_pages.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   Get.put(AuthController());
 
   runApp(const MyApp());
